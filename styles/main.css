@@ -1,0 +1,64 @@
+/* Reset simples */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Corpo geral com display flex para colocar sidebar ao lado do conteúdo */
+body {
+  display: flex;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
+  height: 100vh;
+  background-color: #f5f5f5;
+
+}
+
+/* Sidebar fixo na esquerda */
+
+
+/* Conteúdo principal do lado direito */
+.conteudo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header fixo no topo do conteúdo */
+
+
+/* Main central */
+main {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* Footer simples */
+#footer {
+  background-color: #f0f0f0;
+  padding: 10px 20px;
+  text-align: center;
+  border-top: 1px solid #ccc;
+}
+
+/* Tabela e gráficos com margens */
+canvas {
+  margin-bottom: 20px;
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  margin-top: 20px;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="../../styles/main.css" />
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div id="sidebar"></div>
+  <div class="conteudo">
+    <div id="header"></div>
+
+    <main>
+  <h2>Dados Recentes</h2>
+  <div id="status-card"></div>
+
+  <h3>Sensor 1</h3>
+  <canvas id="chart1" height="120"></canvas>
+
+  <h3>Sensor 2</h3>
+  <canvas id="chart2" height="120"></canvas>
+
+  <h3>Sensor 3</h3>
+  <canvas id="chart3" height="120"></canvas>
+
+  <div id="tabela"></div>
+</main>
+
+    <div id="footer"></div>
+  </div>
+
+  <!-- Carregamento de header, footer, sidebar -->
+  <script type="module" src="../../components/scripts/load-header.js"></script>
+  <script type="module" src="../../components/scripts/load-footer.js"></script>
+  <script type="module" src="../../components/scripts/load-sidebar.js"></script>
+  <script type="module" src="../../modules/grafico.js"></script>
+
+
+  <!-- Scripts do dashboard -->
+  <script type="module" src="../../modules/charts.js"></script>
+  <script type="module" src="../../modules/tabela.js"></script>
+</body>
+</html>

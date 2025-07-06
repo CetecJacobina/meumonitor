@@ -1,0 +1,43 @@
+<script>
+  async function fetchSheetData() {
+    const sheetID = '1LheQIdbSRGaVTULRE6rEY3TuvsPV1wHxEeJrOsn5kIg';
+    const sheetName = 'Página1';
+    const url = `https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?sheet=${sheetName}`;
+
+    try {
+      const res = await fetch(url);
+      const text = await res.text();
+      const json = JSON.parse(text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1));
+      const rows = json.table.rows;
+
+      const dados = rows.map(row => {
+        const [dataRaw, sensor1, sensor2, sensor3] = row.c.map(cell => cell?.v ?? "");
+        const dataFormatada = typeof dataRaw === 'string' && dataRaw.startsWith("Date")
+          ? formatarDataGoogle(dataRaw)
+          : dataRaw;
+
+        return {
+          data: dataFormatada,
+          sensor1,
+          sensor2,
+          sensor3
+        };
+      });
+
+      console.log("📄 Dados formatados:");
+      console.table(dados);
+    } catch (error) {
+      console.error("Erro ao buscar dados:", error);
+    }
+  }
+
+  function formatarDataGoogle(dateStr) {
+    const partes = dateStr.match(/\d+/g);
+    const ano = partes[0];
+    const mes = parseInt(partes[1]) + 1; // mês começa em 0
+    const dia = partes[2];
+    return `${dia}/${mes.toString().padStart(2, '0')}/${ano}`;
+  }
+
+  fetchSheetData();
+</script>

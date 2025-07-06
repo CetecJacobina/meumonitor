@@ -1,0 +1,36 @@
+#sidebar {
+  max-width: 320px;
+  width: 15%;
+  min-width: 100px;
+  background-color: #00026b;
+  color: white;
+  padding: 2px;
+  min-height: 100vh;
+  position: relative;
+}
+nav li{
+  background-color: #00039b;
+    margin: 10px 0px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.247);
+
+}
+
+nav li:hover{
+  background-color: #0004fc;
+    margin: 10px 0px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.247);
+
+}
+
+nav ul{
+    list-style: none;
+}
+nav a{
+  text-decoration: none;
+  color: white;
+  margin-left: 10%;
+}
