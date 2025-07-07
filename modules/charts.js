@@ -1,4 +1,4 @@
-import { fetchSheetData } from '../../modules/api-google-sheets.js';
+import { fetchSheetData } from '/meumonitor/modules/api-google-sheets.js';
 import { formatarNumero, formatarDataHora } from '../../modules/utils.js';
 
 export async function renderCard() {

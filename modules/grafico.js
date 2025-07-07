@@ -1,4 +1,4 @@
-import { fetchSheetData } from "../../modules/api-google-sheets.js";
+import { fetchSheetData } from "/meumonitor/modules/api-google-sheets.js";
 
 export async function renderGraficos(limit = 24) {
   const dados = await fetchSheetData();
