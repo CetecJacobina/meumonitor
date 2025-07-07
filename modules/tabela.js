@@ -1,6 +1,6 @@
 
 
-import { fetchSheetData } from '/meumonitor/modules/api-google-sheets.js';
+import { fetchSheetData } from '../../modules/api-google-sheets.js';
 
 async function montarTabela() {
   const dados = await fetchSheetData();

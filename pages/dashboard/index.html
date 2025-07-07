@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>Dashboard</title>
-  <link rel="stylesheet" href="../../styles/main.css" />
-  
+  <script src="../../boot.js" type="module"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
@@ -13,29 +12,22 @@
     <div id="header"></div>
 
     <main>
-  <h2>Dados Recentes 02</h2>
-  <div id="status-card"></div>
+      <h2>Dados Recentes</h2>
+      <div id="status-card"></div>
 
-  <h3>Sensor 1</h3>
-  <canvas id="chart1" height="120"></canvas>
+      <h3>Sensor 1</h3>
+      <canvas id="chart1" height="120"></canvas>
 
-  <h3>Sensor 2</h3>
-  <canvas id="chart2" height="120"></canvas>
+      <h3>Sensor 2</h3>
+      <canvas id="chart2" height="120"></canvas>
 
-  <h3>Sensor 3</h3>
-  <canvas id="chart3" height="120"></canvas>
+      <h3>Sensor 3</h3>
+      <canvas id="chart3" height="120"></canvas>
 
-  <div id="tabela"></div>
-</main>
+      <div id="tabela"></div>
+    </main>
 
     <div id="footer"></div>
   </div>
-
-  <script type="module" src="/meumonitor/components/scripts/load-header.js"></script>
-<script type="module" src="/meumonitor/components/scripts/load-footer.js"></script>
-<script type="module" src="/meumonitor/components/scripts/load-sidebar.js"></script>
-<script type="module" src="/meumonitor/modules/grafico.js"></script>
-<script type="module" src="/meumonitor/modules/charts.js"></script>
-<script type="module" src="/meumonitor/modules/tabela.js"></script>
 </body>
 </html>
