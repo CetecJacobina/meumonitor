@@ -1,21 +1,20 @@
-// boot.js
 function getBasePath() {
   const host = window.location.hostname;
   if (host.includes("github.io")) {
-    return "/meumonitor/"; // ajuste conforme seu repositório no GitHub
+    return "/meumonitor/";
   }
-  return "../../"; // para Live Server, XAMPP, etc.
+  return "../../";
 }
 
 const base = getBasePath();
 
-// CSS dinâmico
+// Adiciona o CSS principal
 const css = document.createElement("link");
 css.rel = "stylesheet";
 css.href = base + "styles/main.css";
 document.head.appendChild(css);
 
-// Lista de scripts para carregar
+// Scripts que precisam ser carregados primeiro
 const scripts = [
   "components/scripts/load-header.js",
   "components/scripts/load-footer.js",
@@ -25,10 +24,18 @@ const scripts = [
   "modules/tabela.js"
 ];
 
-// Carregamento dinâmico de scripts ES6 (type module)
-scripts.forEach(path => {
-  const script = document.createElement("script");
-  script.type = "module";
-  script.src = base + path;
-  document.body.appendChild(script);
+// Carrega todos os scripts como módulos
+Promise.all(
+  scripts.map(path => {
+    return new Promise(resolve => {
+      const script = document.createElement("script");
+      script.type = "module";
+      script.src = base + path;
+      script.onload = resolve;
+      document.body.appendChild(script);
+    });
+  })
+).then(() => {
+  // Agora sim, importa o atualizador após os módulos estarem prontos
+  import(base + "modules/atualizador.js");
 });

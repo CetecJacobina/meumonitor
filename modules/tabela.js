@@ -2,7 +2,7 @@
 
 import { fetchSheetData } from '../../modules/api-google-sheets.js';
 
-async function montarTabela() {
+export async function montarTabela() {
   const dados = await fetchSheetData();
     
   if (!dados.length) {

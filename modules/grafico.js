@@ -1,10 +1,13 @@
 import { fetchSheetData } from "../../modules/api-google-sheets.js";
 
-export async function renderGraficos(limit = 24) {
-  const dados = await fetchSheetData();
-  if (dados.length < 2) return;
+// Armazena os gráficos ativos para evitar recriação sobre o mesmo canvas
+const charts = {};
 
-  const recentes = dados.slice(1, limit + 1); // Ignora cabeçalho
+export async function renderGraficos(limit =10) {
+  const dados = await fetchSheetData();
+  if (dados.length < 1) return;
+
+  const recentes = dados.slice(0, limit + 1);
 
   const labels = recentes.map(d => d.data);
   const valores1 = recentes.map(d => Number(d.sensor1));
@@ -17,28 +20,35 @@ export async function renderGraficos(limit = 24) {
 }
 
 function desenharGrafico(id, labels, dados, titulo, cor) {
-  const ctx = document.getElementById(id)?.getContext('2d');
-  if (!ctx) return;
+  const canvas = document.getElementById(id);
+  if (!canvas) return;
 
-  new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels,
-      datasets: [{
-        label: titulo,
-        data: dados,
-        borderColor: cor,
-        backgroundColor: cor + '33',
-        tension: 0.3
-      }]
-    },
-    options: {
-      responsive: true,
-      scales: {
-        y: { beginAtZero: false }
-      }
+  const ctx = canvas.getContext('2d');
+
+  // Se já existe um gráfico nesse canvas, destrói antes de criar outro
+  if (charts[id]) {
+    charts[id].destroy();
+  }
+
+  // Cria e armazena o novo gráfico
+  charts[id] = new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels,
+    datasets: [{
+      label: titulo,
+      data: dados,
+      borderColor: cor,
+      backgroundColor: cor + '33',
+      tension: 0.3
+    }]
+  },
+  options: {
+    responsive: true,
+    animation: false, // 🔥 Desativa a animação
+    scales: {
+      y: { beginAtZero: false }
     }
-  });
+  }
+});
 }
-
-renderGraficos(10);

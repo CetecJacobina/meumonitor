@@ -1,36 +1,58 @@
-#sidebar {
-  max-width: 320px;
-  width: 15%;
-  min-width: 100px;
-  background-color: #00026b;
-  color: white;
-  padding: 2px;
-  min-height: 100vh;
+/* Container do conteúdo do header */
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+/* Avatar do usuário */
+.user-menu {
   position: relative;
-}
-nav li{
-  background-color: #00039b;
-    margin: 10px 0px;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.247);
-
+  display: inline-block;
 }
 
-nav li:hover{
-  background-color: #0004fc;
-    margin: 10px 0px;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.247);
-
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid white;
 }
 
-nav ul{
-    list-style: none;
+/* Dropdown oculto por padrão */
+.dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 50px;
+  background-color: white;
+  color: black;
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  min-width: 150px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 100;
 }
-nav a{
+
+.dropdown li {
+  padding: 10px 20px;
+}
+
+.dropdown li:hover {
+  background-color: #f0f0f0;
+}
+
+.dropdown a {
   text-decoration: none;
-  color: white;
-  margin-left: 10%;
+  color: inherit;
+  display: block;
+}
+
+/* Mostrar dropdown ao passar o mouse */
+.user-menu:hover .dropdown {
+  display: block;
 }

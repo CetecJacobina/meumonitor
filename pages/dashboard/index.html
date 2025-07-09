@@ -2,19 +2,38 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-<meta http-equiv="refresh" content="30">
+  <title>Dashboards</title>
+  <script type="module">
+    // Caminho base dinâmico
+    const host = window.location.hostname;
+    const base = host.includes("github.io") ? "/meumonitor/" : "../../";
 
-  <title>Dashboard</title>
-  <script src="../../boot.js" type="module"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    // Carrega Chart.js
+    const chartScript = document.createElement("script");
+    chartScript.src = "https://cdn.jsdelivr.net/npm/chart.js";
+    document.head.appendChild(chartScript);
+
+    // Carrega boot.js dinamicamente
+    const boot = document.createElement("script");
+    boot.type = "module";
+    boot.src = base + "boot.js";
+    document.head.appendChild(boot);
+
+    // Opcional: mostrar caminho base na tela
+    window.addEventListener("DOMContentLoaded", () => {
+      const el = document.getElementById("base-path");
+      if (el) el.textContent = `Base usada: ${base}`;
+    });
+  </script>
 </head>
 <body>
-  <div id="sidebar"></div>
-  <div class="conteudo">
+  <main>
     <div id="header"></div>
 
-    <main>
+    <div id="conteudo">
       <h2>Dados Recentes</h2>
+      <p id="base-path" style="font-size: 0.9em; color: #00000000; margin-top: 1rem;"></p>
+      <p id="ultima-atualizacao" class="atualizacao-hora">Última atualização: —</p>
       <div id="status-card"></div>
 
       <h3>Sensor 1</h3>
@@ -27,9 +46,9 @@
       <canvas id="chart3" height="120"></canvas>
 
       <div id="tabela"></div>
-    </main>
+    </div>
+  </main>
 
-    <div id="footer"></div>
-  </div>
+  <div id="footer"></div>
 </body>
 </html>
