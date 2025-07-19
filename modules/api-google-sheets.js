@@ -3,8 +3,8 @@
  * @returns {Promise<Array>} Array de objetos com os dados formatados
  */
 export async function fetchSheetData() {
-  const sheetID = '1LheQIdbSRGaVTULRE6rEY3TuvsPV1wHxEeJrOsn5kIg';
-  const sheetName = 'Página1';
+  const sheetID = '1NjVPD8BN_GEMKeuZvSXUAazFNcKNDJ0YwZjtvCAfE08';
+  const sheetName = 'Dados';
   const url = `https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?sheet=${sheetName}`;
 
   try {

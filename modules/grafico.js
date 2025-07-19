@@ -3,7 +3,7 @@ import { fetchSheetData } from "../../modules/api-google-sheets.js";
 // Armazena os gráficos ativos para evitar recriação sobre o mesmo canvas
 const charts = {};
 
-export async function renderGraficos(limit =10) {
+export async function renderGraficos(limit =20) {
   const dados = await fetchSheetData();
   if (dados.length < 1) return;
 
