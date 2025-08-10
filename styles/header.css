@@ -17,7 +17,8 @@
 }
 
 .menu-toggle {
-  background-color: #333;
+  background-color: #a7a7a7;
+  box-shadow:  3px 3px 5px rgba(0, 0, 0, 0.432);
   color: white;
   border: none;
   padding: 10px 15px;
@@ -52,7 +53,7 @@
 
 .dropdown-links a {
   text-decoration: none;
-  color: #333;
+  color: #858585;
   display: block;
 }
 header img{

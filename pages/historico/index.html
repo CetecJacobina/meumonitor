@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboards</title>
+  <script type="module">
+    // Caminho base dinâmico
+    const host = window.location.hostname;
+    const base = host.includes("github.io") ? "/meumonitor/" : "../../";
+
+    // Carrega Chart.js
+    const chartScript = document.createElement("script");
+    chartScript.src = "https://cdn.jsdelivr.net/npm/chart.js";
+    document.head.appendChild(chartScript);
+
+    // Carrega boot.js dinamicamente
+    const boot = document.createElement("script");
+    boot.type = "module";
+    boot.src = base + "boot.js";
+    document.head.appendChild(boot);
+
+    // Opcional: mostrar caminho base na tela
+    window.addEventListener("DOMContentLoaded", () => {
+      const el = document.getElementById("base-path");
+      if (el) el.textContent = `Base usada: ${base}`;
+    });
+  </script>
+</head>
+<body>
+  <main>
+    <div id="header"></div>
+
+    <div id="conteudo">
+      <h2>Dados Recentes</h2>
+      <p id="base-path" style="font-size: 0.9em; color: #000000; margin-top: 1rem;"></p>
+      <p id="ultima-atualizacao" class="atualizacao-hora">Última atualização: —</p>
+      <div id="status-card"></div>
+
+      <h3>Sensor 1</h3>
+      <canvas id="chart1" height="120"></canvas>
+
+      <h3>Sensor 2</h3>
+      <canvas id="chart2" height="120"></canvas>
+
+      <h3>Sensor 3</h3>
+      <canvas id="chart3" height="120"></canvas>
+
+      <div id="tabela"></div>
+    </div>
+  </main>
+
+  <div id="footer"></div>
+</body>
+</html>

@@ -1,13 +1,52 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <base href="/" />
-
-  <meta http-equiv="refresh" content="0; URL=pages/dashboard/index.html">
-  <title>Redirecionando...</title>
+  <title>Validador de Token</title>
+  <style>
+    body { font-family: sans-serif; padding: 30px; }
+    input { padding: 10px; width: 300px; font-size: 1rem; }
+    button { padding: 10px 15px; margin-left: 10px; }
+    #status { margin-top: 20px; font-weight: bold; }
+  </style>
 </head>
 <body>
-  <p>Redirecionando para o painel principal....</p>
+  <h2>Meu Monitor</h2>
+
+  <form id="formToken">
+    <input type="text" name="token" placeholder="Digite seu token" required><br>
+    <button type="submit">Entrar</button>
+  </form>
+
+  <div id="status"></div>
+
+  <script>
+    document.getElementById("formToken").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const status = document.getElementById("status");
+      status.textContent = "⏳ Validando token...";
+
+      const formData = new FormData(e.target);
+
+      try {
+        const resposta = await fetch("https://script.google.com/macros/s/AKfycby5ffiLGO84cdG9-eH0JEOlCy8NAjzm3DYyIP3eJ44kt1Bmapuypwaq93173ZhPo3Xm/exec", {
+          method: "POST",
+          body: formData
+        });
+
+        const json = await resposta.json();
+
+        if (json.urlsecreta) {
+          status.textContent = "✅ Redirecionando...";
+          window.location.href = json.urlsecreta;
+        } else {
+          status.textContent = "❌ Token inválido ou sem URL.";
+        }
+      } catch (erro) {
+        console.error(erro);
+        status.textContent = "❌ Erro na requisição.";
+      }
+    });
+  </script>
 </body>
 </html>
