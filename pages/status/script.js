@@ -119,7 +119,7 @@ function atualizarPainel({ sensores, uptime, wifiUptime }) {
 
   sensores.forEach((sensor, i) => {
     const bar = parseFloat(sensor.bar);
-    const valor = sensor.valor;
+    const valor = sensor.valor; 
 
     let status = "Normal";
     if (bar < 175) status = "Baixo";
